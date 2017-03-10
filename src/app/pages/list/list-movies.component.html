@@ -1,5 +1,4 @@
-<div>
-<p class="text-right"><a class="btn btn-success" routerLink="/add" routerLinkActive="active">Add</a></p>
+<p class="text-right"><a class="btn btn-success" (click)="open('add')">Add</a></p>
 <table class="table table-hover">   
     <thead>
         <tr>
@@ -9,6 +8,7 @@
             <th>Classification</th>
             <th>Duration</th>
             <th>Genres</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -19,11 +19,10 @@
             <td>{{ movie.Classification }}</td>
             <td>{{ movie.Duration }}</td>
             <td>{{ movie.Genres }}</td>
-            <td class="pull-left">             
-                <a class="btn btn-primary" routerLink="/edit" routerLinkActive="active">Edit</a>
+            <td>
+                <a class="btn btn-primary" (click)="open('edit')">Edit</a>
                 <a class="btn btn-danger" routerLink="/delete" routerLinkActive="active">Delete</a>
             </td>
         </tr>
     </tbody>
 </table>
-</div>

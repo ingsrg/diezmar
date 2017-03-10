@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { MdDialogRef } from '@angular/material';
 
 // Simple component
 @Component({
@@ -7,6 +8,8 @@ import {Component} from '@angular/core';
 })
 
 export class EditMovieComponent {
+    constructor(public dialogRef: MdDialogRef<any>) { }
+
     /*
     editBookForm: ControlGroup;
     titleInput: Control;

@@ -8,23 +8,29 @@ import { DeleteMovieComponent } from './pages/delete/delete-movie.component';
 import { MovieService } from './services/movie.service';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AddMovieComponent } from './pages/add/add-movie.component';
+import { MaterialModule } from '@angular/material';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListMoviesComponent,
     EditMovieComponent,
-    DeleteMovieComponent
+    DeleteMovieComponent,
+    AddMovieComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    MaterialModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: '/list-movies', pathMatch: 'full' },   
       { path: 'list-movies',  component: ListMoviesComponent },         
       { path: 'edit', component: EditMovieComponent },
-      { path: 'delete', component: DeleteMovieComponent }
+      { path: 'delete', component: DeleteMovieComponent },
+      { path: 'add', component: AddMovieComponent }
     ])
   ],
   providers: [MovieService],

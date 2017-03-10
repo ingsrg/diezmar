@@ -1,8 +1,13 @@
 // Angular 2
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { MovieService } from '../../services/movie.service';
 import { OnInit } from '@angular/core';
+import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
+import { EditMovieComponent } from '../edit/edit-movie.component';
+import { AddMovieComponent } from '../add/add-movie.component';
+
+const dialogsMap = {'add': AddMovieComponent, 'edit': EditMovieComponent}
 
 @Component({
     selector: 'list-movies',
@@ -11,9 +16,24 @@ import { OnInit } from '@angular/core';
 
 export class ListMoviesComponent {
     movies: Movie[];
+    dialogRef: MdDialogRef<any>;
 
-    constructor(private movieService: MovieService) {
+    constructor(
+        private movieService: MovieService,
+        public dialog: MdDialog,
+        public viewContainerRef: ViewContainerRef) {
         this.getMovies();
+    }
+
+    open(key) {
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.viewContainerRef;
+
+        this.dialogRef = this.dialog.open(dialogsMap[key], config);
+
+        this.dialogRef.afterClosed().subscribe(result => {
+        this.dialogRef = null;
+        });
     }
 
     ngOnInit(): void {
