@@ -1,3 +1,23 @@
+import { Injectable } from "@angular/core";
+import { Http } from "@angular/http";
+import "rxjs/add/operator/map";
+import { Observable } from "rxjs/Observable";
+import { Movie } from "../models/movie";
+import { Configuration } from "../app.constants";
+
+@Injectable()
+export class MovieService {
+    constructor(private _http: Http, private _configuration: Configuration) {
+    }
+
+    public getAll(): Observable<Movie[]> {
+        return this._http.get(this._configuration.ServerWithApiUrl)
+            .map(data => data.json());
+    }
+}
+
+
+/*
 import {Injectable} from '@angular/core';
 import { Movie } from '../models/movie';
 import { MOVIES } from '../models//mock-movies';
@@ -7,6 +27,7 @@ export class MovieService {
     getMovies(): Promise<Movie[]> {
         return Promise.resolve(MOVIES);
     }
+*/
 
     /*
     http: Http;
@@ -51,4 +72,8 @@ export class MovieService {
         return this.http.delete(this.baseURL + '/' + id);
     }
     */
+
+
+    /*
 }
+*/

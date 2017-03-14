@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AddMovieComponent } from './pages/add/add-movie.component';
 import { MaterialModule } from '@angular/material';
+import { Configuration } from './app.constants';
 import 'hammerjs';
 
 @NgModule({
@@ -33,7 +34,7 @@ import 'hammerjs';
       { path: 'add', component: AddMovieComponent }
     ])
   ],
-  providers: [MovieService],
+  providers: [MovieService, Configuration],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

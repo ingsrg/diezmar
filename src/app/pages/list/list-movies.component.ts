@@ -41,7 +41,17 @@ export class ListMoviesComponent {
     }
 
     getMovies(): void {
-        this.movieService.getMovies().then(movies => this.movies = movies);
+        /*
+           this.movieService
+            .getAll()
+            .subscribe((data: Movie[]) => this.movies = data);
+*/
+
+            this.movieService.getAll().subscribe((movie:Movie[]) => {
+            this.movies = movie;
+            });
+
+        //this.movieService.getMovies().then(movies => this.movies = movies);
         
         /*
         this.bookService.getBooks()
